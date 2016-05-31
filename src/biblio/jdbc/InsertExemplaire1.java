@@ -17,24 +17,15 @@ import biblio.metier.modele.EnumStatusExemplaire;
 import biblio.metier.modele.Exemplaire;
 
 public class InsertExemplaire1 {
-	public static final String JDBC_DRIVER =  "oracle.jdbc.driver.OracleDriver";
-	public static final String DB_URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	public static final String USER = "biblio";
-	public static final String PASS = "biblio";
 	private Statement stm;
 	private static final DateFormat DF = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH );
-	private Connection conn;
+	private Connection conn =ConnectionProperties.getInstance();
 	
 	public void initConnection(){
 		try {
-			Class.forName (JDBC_DRIVER);
-			conn = DriverManager.getConnection(DB_URL, USER, PASS);
 			conn.setAutoCommit(false);
 			this.stm = conn.createStatement();
-			
 			System.out.println("Connecting to a selected database ...");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -44,7 +35,6 @@ public class InsertExemplaire1 {
 			conn.close();
 		} catch (SQLException e) {
 			System.out.println("ERROR : Can not close the connection");
-			//e.printStackTrace();
 		}
 	}
 	public void insertExemplaire(Exemplaire ex){
@@ -79,6 +69,7 @@ public class InsertExemplaire1 {
 	}
 	
 	public static void main(String[] args) {
+		ConnectionProperties.creatPropertiesFile("biblio", "biblio", "jdbc");
 		InsertExemplaire1 ie1 = new InsertExemplaire1();
 		ie1.initConnection();
 		Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "5IBLFOQN6S9C7" );

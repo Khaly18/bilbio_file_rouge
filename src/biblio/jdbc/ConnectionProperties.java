@@ -18,11 +18,12 @@ public class ConnectionProperties {
 	private static Connection conn =null;
 	
 	private ConnectionProperties(){
-		
 	}
-	public Connection getInstance(){
+	
+	public static Connection getInstance(){
 		if (conn == null){
 			try {
+				System.out.println("tentative execution getInstance");
 				Class.forName(connJDBC.getProperty("driver"));
 				return conn = DriverManager.getConnection(connJDBC.getProperty("url"), 
 						connJDBC.getProperty("user"), connJDBC.getProperty("pwd"));
@@ -59,10 +60,8 @@ public class ConnectionProperties {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	/**
-	 *
 	 *	write the file in the hardDrive with the specified fileName
 	 */
 	private static void writeTheFile(String fileName){
