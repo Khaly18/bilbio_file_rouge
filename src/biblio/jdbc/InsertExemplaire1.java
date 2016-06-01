@@ -40,8 +40,8 @@ public class InsertExemplaire1 {
 	public void insertExemplaire(Exemplaire ex){
 		int retour = 0;
 		String d = dateToString(ex.getDateAchat());
-		String sqlBuilder= "INSERT INTO exemplaire (dateachat, status, isbn) VALUES ('"
-		+d+"' , '"+ex.getStatus()+"' , '"+ex.getIsbn()+"')";
+		String sqlBuilder= "INSERT INTO exemplaire (idexemplaire, dateachat, status, isbn) VALUES ("
+		+25+", '"+d+"' , '"+ex.getStatus()+"' , '"+ex.getIsbn()+"')";
 		System.out.println(sqlBuilder);
 		
 		
@@ -51,7 +51,7 @@ public class InsertExemplaire1 {
 			
 		} catch (SQLException e) {
 			System.out.println("Code ERR : "+retour+" Echec Insertion");
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
@@ -72,7 +72,7 @@ public class InsertExemplaire1 {
 		ConnectionProperties.creatPropertiesFile("biblio", "biblio", "jdbc");
 		InsertExemplaire1 ie1 = new InsertExemplaire1();
 		ie1.initConnection();
-		Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "5IBLFOQN6S9C7" );
+		Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
 		System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
 		ie1.insertExemplaire(ex);
 	}
