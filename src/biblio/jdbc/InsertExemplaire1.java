@@ -15,11 +15,10 @@ import biblio.metier.modele.Exemplaire;
 public class InsertExemplaire1 {
 	private Statement stm;
 	private static final DateFormat DF = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH );
-	private Connection conn =ConnectionFactory.getConnection();
+	private Connection conn =ConnectionFactory.getConnectionSansAutocomit();
 	
 	public void initConnection(){
 		try {
-			conn.setAutoCommit(false);
 			this.stm = conn.createStatement();
 			System.out.println("Connecting to a selected database ...");
 		} catch (SQLException e) {

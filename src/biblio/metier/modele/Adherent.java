@@ -67,7 +67,22 @@ public class Adherent extends Utilisateur {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString();
+	}
+
+	public String[] getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		if (this.telephone[0] == null){
+			this.telephone[0] = telephone;
+		}else{
+			this.telephone[1] = telephone;
+		}
+	}
+	
+	public void setTelephone (String telephone, int index){
+		this.telephone[index] = telephone;
 	}
 }

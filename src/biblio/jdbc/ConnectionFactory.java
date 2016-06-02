@@ -28,12 +28,14 @@ public class ConnectionFactory{
 				System.out.println("tentative execution getInstance");
 				
 				if (connJDBC.getProperty("driver") == null){
-					loadProperties("jdbc.propertie");
+					loadProperties("jdbc.properties");
 					
 				}
 				Class.forName(connJDBC.getProperty("driver"));
-				return conn = DriverManager.getConnection(connJDBC.getProperty("url"), 
+				conn = DriverManager.getConnection(connJDBC.getProperty("url"), 
 						connJDBC.getProperty("user"), connJDBC.getProperty("pwd"));
+				conn.setAutoCommit(true);
+				return conn;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
@@ -42,6 +44,30 @@ public class ConnectionFactory{
 		}
 		return conn;
 	}
+	
+	public static Connection getConnectionSansAutocomit(){
+		if (conn == null){
+			try {
+				System.out.println("tentative execution getInstance");
+				
+				if (connJDBC.getProperty("driver") == null){
+					loadProperties("jdbc.properties");
+					
+				}
+				Class.forName(connJDBC.getProperty("driver"));
+				conn = DriverManager.getConnection(connJDBC.getProperty("url"), 
+						connJDBC.getProperty("user"), connJDBC.getProperty("pwd"));
+				conn.setAutoCommit(false);
+				return conn;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		return conn;
+	}
+	
 	public static void creatPropertiesFile(String user, String pass, String fileName){
 		connJDBC.setProperty("driver", "oracle.jdbc.driver.OracleDriver");
 		connJDBC.setProperty("url", "jdbc:oracle:thin:@localhost:1521:xe");
@@ -63,6 +89,7 @@ public class ConnectionFactory{
 			connJDBC.load(fis);
 			fis.close();
 		} catch (FileNotFoundException e) {
+			System.out.println(filePath+" File doesn't exist !");
 			loadProperties(JOptionPane.showInputDialog("Entrez le path du fichier properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
