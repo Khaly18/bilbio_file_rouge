@@ -2,25 +2,19 @@
 package biblio.jdbc;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.Locale;
 
-import biblio.metier.modele.EnumStatusExemplaire;
-import biblio.metier.modele.Exemplaire;
 
 public class InsertExemplaire2 {
 	private Statement stm;
 	private static final DateFormat DF = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH );
-	private Connection conn =ConnectionProperties.getInstance();
+	private Connection conn =ConnectionFactory.getConnection();
 	
 	public void initConnection(){
 		try {
@@ -68,11 +62,11 @@ public class InsertExemplaire2 {
 	}
 	
 	public static void main(String[] args) {
-		ConnectionProperties.creatPropertiesFile("biblio", "biblio", "jdbc");
 		InsertExemplaire2 ie2 = new InsertExemplaire2();
 		ie2.initConnection();
 		//Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
 		//System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
 		ie2.insertExemplaire();
+		ie2.closeConnection();
 	}
 }

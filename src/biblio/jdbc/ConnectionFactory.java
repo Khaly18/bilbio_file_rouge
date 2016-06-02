@@ -9,21 +9,27 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.swing.JOptionPane;
+
 /**
  * @author John-Weetaker
  *
  */
-public class ConnectionProperties {
+public class ConnectionFactory{
 	private static final Properties connJDBC = new Properties();
 	private static Connection conn =null;
 	
-	private ConnectionProperties(){
+	private ConnectionFactory(){
 	}
 	
-	public static Connection getInstance(){
+	public static Connection getConnection(){
 		if (conn == null){
 			try {
 				System.out.println("tentative execution getInstance");
+				
+				if (connJDBC.getProperty("driver") == null){
+					loadProperties(JOptionPane.showInputDialog("Entrez le path du fichier properties"));
+				}
 				Class.forName(connJDBC.getProperty("driver"));
 				return conn = DriverManager.getConnection(connJDBC.getProperty("url"), 
 						connJDBC.getProperty("user"), connJDBC.getProperty("pwd"));

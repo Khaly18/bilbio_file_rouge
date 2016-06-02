@@ -9,10 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import biblio.metier.modele.EnumStatusExemplaire;
-import biblio.metier.modele.Exemplaire;
-
-public class InsertExemplaire1 {
+public class Trigger {
 	private Statement stm;
 	private static final DateFormat DF = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH );
 	private Connection conn =ConnectionFactory.getConnection();
@@ -33,17 +30,20 @@ public class InsertExemplaire1 {
 			System.out.println("ERROR : Can not close the connection");
 		}
 	}
-	public void insertExemplaire(Exemplaire ex){
+	public void declencheur(){
 		int retour = 0;
-		String d = dateToString(ex.getDateAchat());
-		String sqlBuilder= "INSERT INTO exemplaire (idexemplaire, dateachat, status, isbn) VALUES ("
-		+25+", '"+d+"' , '"+ex.getStatus()+"' , '"+ex.getIsbn()+"')";
+		String sqlBuilder= " DELETE FROM empruntencours WHERE idexemplaire = 3 AND idutilisateur = 4";
 		System.out.println(sqlBuilder);
+		//ResultSet result;
 		
 		
 		try {
 			System.out.println("Code retour "+(retour = stm.executeUpdate(sqlBuilder))+"  OK.");
-			conn.commit();
+			/*result = stm.getResultSet();
+			while(result.next()){
+				System.out.println("ISBN : " +result.getString(1)+ " \t Nombre exemplaire : "+ result.getInt(2));
+			}*/
+			//conn.commit();
 			
 		} catch (SQLException e) {
 			System.out.println("Code ERR : "+retour+" Echec Insertion");
@@ -65,12 +65,11 @@ public class InsertExemplaire1 {
 	}
 	
 	public static void main(String[] args) {
-		//ConnectionFactory.creatPropertiesFile("biblio", "biblio", "jdbc");
-		InsertExemplaire1 ie1 = new InsertExemplaire1();
-		ie1.initConnection();
-		Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
-		System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
-		ie1.insertExemplaire(ex);
-		ie1.closeConnection();
+		Trigger t= new Trigger();
+		t.initConnection();
+		//Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
+		//System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
+		t.declencheur();
+		t.closeConnection();
 	}
 }
