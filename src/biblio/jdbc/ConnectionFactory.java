@@ -28,7 +28,8 @@ public class ConnectionFactory{
 				System.out.println("tentative execution getInstance");
 				
 				if (connJDBC.getProperty("driver") == null){
-					loadProperties(JOptionPane.showInputDialog("Entrez le path du fichier properties"));
+					loadProperties("jdbc.propertie");
+					
 				}
 				Class.forName(connJDBC.getProperty("driver"));
 				return conn = DriverManager.getConnection(connJDBC.getProperty("url"), 
@@ -62,7 +63,7 @@ public class ConnectionFactory{
 			connJDBC.load(fis);
 			fis.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			loadProperties(JOptionPane.showInputDialog("Entrez le path du fichier properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
