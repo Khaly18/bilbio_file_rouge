@@ -46,7 +46,6 @@ public class CompteExemplaireByLivre {
 			while(result.next()){
 				System.out.println("ISBN : " +result.getString(1)+ " \t Nombre exemplaire : "+ result.getInt(2));
 			}
-			//conn.commit();
 			
 		} catch (SQLException e) {
 			System.out.println("Code ERR : "+retour+" Echec Insertion");
@@ -70,8 +69,6 @@ public class CompteExemplaireByLivre {
 	public static void main(String[] args) {
 		CompteExemplaireByLivre cebl = new CompteExemplaireByLivre();
 		cebl.initConnection();
-		//Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
-		//System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
 		cebl.compteExemplaire();
 		cebl.closeConnection();
 	}

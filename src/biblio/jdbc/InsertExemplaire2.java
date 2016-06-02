@@ -64,8 +64,6 @@ public class InsertExemplaire2 {
 	public static void main(String[] args) {
 		InsertExemplaire2 ie2 = new InsertExemplaire2();
 		ie2.initConnection();
-		//Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
-		//System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
 		ie2.insertExemplaire();
 		ie2.closeConnection();
 	}

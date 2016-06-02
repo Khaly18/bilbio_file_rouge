@@ -65,7 +65,6 @@ public class InsertExemplaire1 {
 	}
 	
 	public static void main(String[] args) {
-		//ConnectionFactory.creatPropertiesFile("biblio", "biblio", "jdbc");
 		InsertExemplaire1 ie1 = new InsertExemplaire1();
 		ie1.initConnection();
 		Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );

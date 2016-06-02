@@ -34,16 +34,9 @@ public class Trigger {
 		int retour = 0;
 		String sqlBuilder= " DELETE FROM empruntencours WHERE idexemplaire = 3 AND idutilisateur = 4";
 		System.out.println(sqlBuilder);
-		//ResultSet result;
-		
 		
 		try {
 			System.out.println("Code retour "+(retour = stm.executeUpdate(sqlBuilder))+"  OK.");
-			/*result = stm.getResultSet();
-			while(result.next()){
-				System.out.println("ISBN : " +result.getString(1)+ " \t Nombre exemplaire : "+ result.getInt(2));
-			}*/
-			//conn.commit();
 			
 		} catch (SQLException e) {
 			System.out.println("Code ERR : "+retour+" Echec Insertion");
@@ -67,8 +60,6 @@ public class Trigger {
 	public static void main(String[] args) {
 		Trigger t= new Trigger();
 		t.initConnection();
-		//Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
-		//System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
 		t.declencheur();
 		t.closeConnection();
 	}
