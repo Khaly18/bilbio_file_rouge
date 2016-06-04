@@ -8,6 +8,7 @@ import java.util.Locale;
 
 public class ConvertDate {
 	private static final DateFormat DF = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH );
+	//private static final DateFormat DFsql = new SimpleDateFormat()"dd-MM-yy"
 	
 	public static  String dateToString(Date date){
 		return DF.format(date);
@@ -19,6 +20,9 @@ public class ConvertDate {
 			System.out.println("Can not convert string to date");
 			//e.printStackTrace();
 		}
+		return null;
+	}
+	private Date stringToDateSqlFormat(String string){
 		return null;
 	}
 }

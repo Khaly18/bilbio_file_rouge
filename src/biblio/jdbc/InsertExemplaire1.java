@@ -9,8 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import biblio.dao.UtilisateurDao;
+import biblio.metier.modele.Employe;
 import biblio.metier.modele.EnumStatusExemplaire;
 import biblio.metier.modele.Exemplaire;
+import biblio.metier.modele.Utilisateur;
 
 public class InsertExemplaire1 {
 	private Statement stm;
@@ -66,9 +69,17 @@ public class InsertExemplaire1 {
 	public static void main(String[] args) {
 		InsertExemplaire1 ie1 = new InsertExemplaire1();
 		ie1.initConnection();
-		Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
-		System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
-		ie1.insertExemplaire(ex);
-		ie1.closeConnection();
+		//Exemplaire ex = new Exemplaire(2311, InsertExemplaire1.stringToDate("18/01/16"), EnumStatusExemplaire.DISPONIBLE, "3200066559" );
+		//System.out.println(InsertExemplaire1.stringToDate("18/01/16"));
+		//ie1.insertExemplaire(ex);
+		
+		UtilisateurDao u1= new UtilisateurDao(ConnectionFactory.getConnectionSansAutocomit());
+		Utilisateur utilisateur1 =u1.findByKey(6);
+		Employe emp = (Employe) utilisateur1;
+		System.out.println(emp);
+		System.out.println(u1.findAll());
+		
+		//ie1.closeConnection();
+		
 	}
 }
