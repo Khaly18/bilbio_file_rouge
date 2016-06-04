@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import biblio.metier.Adhérent;
+import biblio.metier.Adherent;
 import biblio.metier.Employe;
 import biblio.metier.EnumCategorieEmploye;
 import biblio.metier.Utilisateur;
@@ -48,7 +48,7 @@ public class UtilisateursDao {
 				cat = result.getString(5);
 				if (cat.equals("ADHERENT")) {
 					tel = result.getString(6);
-					user = new Adhérent(nom, prenom, id, pwd, tel);
+					user = new Adhï¿½rent(nom, prenom, id, pwd, tel);
 				}
 				if (cat.equals("EMPLOYE")) {
 					code = result.getString(7);
@@ -93,7 +93,7 @@ public class UtilisateursDao {
 				cat = result.getString(5);
 				if (cat.equals("ADHERENT")) {
 					tel = result.getString(6);
-					user = new Adhérent(nom, prenom, id, pwd, tel);
+					user = new Adhï¿½rent(nom, prenom, id, pwd, tel);
 				}
 				if (cat.equals("EMPLOYE")) {
 					code = result.getString(7);
