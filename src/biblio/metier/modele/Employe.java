@@ -30,6 +30,7 @@ public class Employe extends Utilisateur {
 	
 	@Override
 	public String toString() {
-		return super.toString();
+		return super.toString() + "codeMatricule :"+ codeMatricule +" categorieEmployer :" + categorieEpmloye.toString();
+		
 	}
 }

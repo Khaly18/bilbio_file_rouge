@@ -23,11 +23,9 @@ public class Adherent extends Utilisateur {
 		} else {
 			return false;
 		}
-			
 	}
 	
 	public int getNbRetards(){
-		
 		int i = 0;
 		for (EmpruntEnCours eec : getEmpruntEnCours()){
 			if (isPretEnRetard(eec)){
@@ -63,7 +61,6 @@ public class Adherent extends Utilisateur {
 			} catch (BiblioException e) {
 				e.printStackTrace();
 			}
-		
 	}
 	@Override
 	public String toString() {

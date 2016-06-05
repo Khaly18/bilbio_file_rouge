@@ -7,6 +7,9 @@ public class EmpruntEnCours {
 	private Utilisateur emprunteur;
 	private Exemplaire exemplaire=null;
 	
+	public EmpruntEnCours() {
+		
+	}
 	public EmpruntEnCours(Exemplaire ex) {
 		exemplaire =ex;
 		dateEmprunt =new Date();
