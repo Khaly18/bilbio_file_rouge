@@ -82,7 +82,7 @@ public class InsertExemplaire1 {
 		Employe emp = (Employe) utilisateur1;
 		System.out.println(emp);
 		System.out.println(u1.findAll());
-		EmpruntEnCoursDB eec = new EmpruntEnCoursDB(new Date(), 1, 1);
+		EmpruntEnCoursDB eec = new EmpruntEnCoursDB(new Date(), 25, 1);
 		EmpruntEnCoursDao eecd = new EmpruntEnCoursDao(cnx);
 		eecd.insertEmpruntEnCours(eec);
 		
