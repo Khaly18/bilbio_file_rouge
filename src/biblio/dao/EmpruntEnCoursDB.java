@@ -3,29 +3,30 @@ package biblio.dao;
 
 import java.util.Date;
 
+import biblio.metier.modele.EmpruntEnCours;
 import biblio.metier.modele.Exemplaire;
 import biblio.metier.modele.Utilisateur;
 
-public class EmpruntEnCoursDB {
-	private Date dateEmprunt;
+public class EmpruntEnCoursDB extends EmpruntEnCours{
 	private int idExemplaire;
 	private int idUtilisateur;
 	
 	public EmpruntEnCoursDB(Exemplaire ex, int idUtilisateur) {
-		dateEmprunt =new Date();
+		super(ex);
 		idExemplaire = ex.getIdExemplaire();
 	}
+	
 	public EmpruntEnCoursDB( Date date, int idExemplaire, int idUtilisateur){
-		dateEmprunt = date;
 		this.idExemplaire = idExemplaire;
 		this.idUtilisateur = idUtilisateur;
+		super.setDateEmprunt(date);
 	}
 	
 	public void setDateEmprunt (Date d){
-		dateEmprunt = d;
+		super.setDateEmprunt(d);
 	}
 	public Date getDateEmprunt(){
-		return dateEmprunt;
+		return super.getDateEmprunt();
 	}
 	public Utilisateur getEmprunteur(){
 		return null;
