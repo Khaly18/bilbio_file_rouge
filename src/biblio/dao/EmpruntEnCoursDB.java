@@ -33,7 +33,7 @@ public class EmpruntEnCoursDB extends EmpruntEnCours{
 	}
 	@Override
 	public String toString() {
-		return " isbn ";
+		return "idUtili : "+idUtilisateur +" idExemp : " + idExemplaire+" date : " + this.getDateEmprunt();
 	}
 	public int getIdExemplaire() {
 		return idExemplaire;

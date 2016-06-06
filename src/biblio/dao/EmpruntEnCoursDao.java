@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import biblio.jdbc.ConvertDate;
 
@@ -34,6 +35,44 @@ public class EmpruntEnCoursDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public EmpruntEnCoursDB findByKey(int idex){
+		EmpruntEnCoursDB emp = null;
+		String sqlBuilder = "SELECT idexemplaire, idutilisateur, dateemprunt FROM empruntencours WHERE idexemplaire = "+ idex;
+		
+		Statement stm;
+		try {
+			
+			stm = conn.createStatement();
+			ResultSet result= stm.executeQuery(sqlBuilder);
+			while (result.next()){
+				return emp = new EmpruntEnCoursDB(result.getDate(3), result.getInt(1), result.getInt(2));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return emp;
+	}
+	
+	public ArrayList<EmpruntEnCoursDB> findByUtilisateur(int util){
+		String sqlBuilder = "SELECT idexemplaire, idutilisateur, dateemprunt FROM empruntencours WHERE idutilisateur = "+ util;
+		ArrayList<EmpruntEnCoursDB> arrEmp = new ArrayList<EmpruntEnCoursDB>();
+		
+		try {
+			
+			Statement stm = conn.createStatement();
+			ResultSet result= stm.executeQuery(sqlBuilder);
+			while (result.next()){
+				arrEmp.add(new EmpruntEnCoursDB(result.getDate(3), result.getInt(1), result.getInt(2)));
+			}
+			return arrEmp;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arrEmp;
+	}
+	
 	
 	private void changeStatusExemplaire(EmpruntEnCoursDB emp){
 		

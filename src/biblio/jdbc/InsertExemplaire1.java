@@ -80,11 +80,12 @@ public class InsertExemplaire1 {
 		UtilisateurDao u1= new UtilisateurDao(cnx);
 		Utilisateur utilisateur1 =u1.findByKey(6);
 		Employe emp = (Employe) utilisateur1;
-		System.out.println(emp);
-		System.out.println(u1.findAll());
-		EmpruntEnCoursDB eec = new EmpruntEnCoursDB(new Date(), 25, 1);
+		//System.out.println(emp);
+		//System.out.println(u1.findAll());
+		//EmpruntEnCoursDB eec = new EmpruntEnCoursDB(new Date(), 25, 1);
 		EmpruntEnCoursDao eecd = new EmpruntEnCoursDao(cnx);
-		eecd.insertEmpruntEnCours(eec);
+		//eecd.insertEmpruntEnCours(eec);
+		System.out.println(eecd.findByUtilisateur(1));
 		
 		//ie1.closeConnection();
 		
