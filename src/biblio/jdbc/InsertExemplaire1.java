@@ -13,8 +13,6 @@ import biblio.dao.EmpruntEnCoursDB;
 import biblio.dao.EmpruntEnCoursDao;
 import biblio.dao.UtilisateurDao;
 import biblio.metier.modele.Employe;
-import biblio.metier.modele.EmpruntEnCours;
-import biblio.metier.modele.EnumStatusExemplaire;
 import biblio.metier.modele.Exemplaire;
 import biblio.metier.modele.Utilisateur;
 
@@ -82,10 +80,9 @@ public class InsertExemplaire1 {
 		Employe emp = (Employe) utilisateur1;
 		//System.out.println(emp);
 		//System.out.println(u1.findAll());
-		//EmpruntEnCoursDB eec = new EmpruntEnCoursDB(new Date(), 25, 1);
+		EmpruntEnCoursDB eec = new EmpruntEnCoursDB(new Date(), 1, 3);
 		EmpruntEnCoursDao eecd = new EmpruntEnCoursDao(cnx);
-		//eecd.insertEmpruntEnCours(eec);
-		System.out.println(eecd.findByUtilisateur(1));
+		eecd.insertEmpruntEnCours(eec);
 		
 		//ie1.closeConnection();
 		

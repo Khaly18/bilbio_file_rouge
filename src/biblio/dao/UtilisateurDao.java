@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import biblio.jdbc.ConvertDate;
 import biblio.metier.modele.Adherent;
 import biblio.metier.modele.Employe;
 import biblio.metier.modele.EnumCategorieEmploye;

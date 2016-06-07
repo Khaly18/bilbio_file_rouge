@@ -37,6 +37,7 @@ public class Adherent extends Utilisateur {
 	public boolean isPretEnRetard(EmpruntEnCours emp){
 		if (emp!=null){
 			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+			
 			Calendar calen = Calendar.getInstance();
 			calen.setTime((emp.getDateEmprunt()));
 			calen.add(Calendar.DAY_OF_YEAR, dureeMaxPrets);
