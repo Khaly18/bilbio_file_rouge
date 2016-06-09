@@ -80,9 +80,17 @@ public class InsertExemplaire1 {
 		Employe emp = (Employe) utilisateur1;
 		//System.out.println(emp);
 		//System.out.println(u1.findAll());
+<<<<<<< HEAD
 		EmpruntEnCoursDB eec = new EmpruntEnCoursDB(new Date(), 25, 6);
 		EmpruntEnCoursDao eecd = new EmpruntEnCoursDao(cnx);
 		eecd.insertEmpruntEnCours(eec);
+=======
+		//EmpruntEnCoursDB eec = new EmpruntEnCoursDB(new Date(), 25, 6);
+		EmpruntEnCoursDao eecd = new EmpruntEnCoursDao(cnx);
+		//eecd.insertEmpruntEnCours(eec);
+		eecd.retourEmprunt(25);
+		
+>>>>>>> dd2be9d639cba31745c4df732e330ca04b9daa17
 		
 		//ie1.closeConnection();
 		
