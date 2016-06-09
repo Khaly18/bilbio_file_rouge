@@ -52,6 +52,7 @@ public class EmprunterCtl {
 		String sqlBuilder = " SELECT exemplaire.idexemplaire, exemplaire.status FROM exemplaire "
 							+ "WHERE exemplaire.idexemplaire = ? ";
 		
+		
 		try {
 			
 			PreparedStatement pstm = conn.prepareStatement(sqlBuilder);

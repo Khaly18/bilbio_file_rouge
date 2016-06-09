@@ -55,7 +55,7 @@ public class EmpruntArchiveDao {
 		return arrEmpruntAdb;
 	}
 	
-	//ajouter table retardEncours et Retardarchive
+	//ajouter table retardEncours et Retardarchive 
 	public void retourEmprunt(int idExemplaire) {
 		String sqlBuilder = "SELECT idexemplaire, idutilisateur, dateemprunt"
 				+ " FROM empruntencours WHERE idexemplaire = "+ idExemplaire;

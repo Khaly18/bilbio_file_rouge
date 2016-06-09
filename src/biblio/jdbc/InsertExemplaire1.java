@@ -85,7 +85,6 @@ public class InsertExemplaire1 {
 		//eecd.insertEmpruntEnCours(eec);
 		eecd.retourEmprunt(25);
 		
-		
 		//ie1.closeConnection();
 		
 	}
