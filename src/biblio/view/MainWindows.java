@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MainWindows extends Application {
 
@@ -23,6 +24,7 @@ public class MainWindows extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.windows = primaryStage;
+		windows.initStyle(StageStyle.UNIFIED);
 		windows.setTitle("BiblioApp");
 
 		initRootLayout();

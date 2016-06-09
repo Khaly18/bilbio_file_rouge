@@ -1,6 +1,7 @@
 
 #btn_connecter{
 	-fx-background-color: rgb(100,102,260);
+	-fx-effect: dropshadow(gaussian, #929983, 15, 0.221, 0, 0) ;
 
 }
 #btn_inscrire{
@@ -8,11 +9,18 @@
 
 }
 #root_anchorpane{
+	-fx-background-radius: 50;
 	-fx-background-image: url("pict0_0_1.jpg");
-	/*-fx-background-color: transparent;*/
 	-fx-background-position: center center;
-
+	-fx-effect: dropshadow(gaussian, #929983, 100, 0.221, 0, 0) ;
 }
-#anchorpane_2{
-
+#anchorpane_textfield{
+	-fx-background-color: rgba(255, 255, 255, 0.39);
+	-fx-background-radius: 10;
+	-fx-effect: dropshadow(gaussian, #929983, 15, 0.221, 0, 0) ;
 }
+/* #anch_connecter{
+	-fx-background-color: rgba(255, 255, 255, 0.5);
+	-fx-background-radius: 10;
+	-fx-effect: innershadow(gaussian, rgba(255, 255, 255), 0, 0.1, 1, 0) ;
+}*/
