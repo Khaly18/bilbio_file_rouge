@@ -25,11 +25,7 @@ public class EmpruntArchiveDao {
 			stm = conn.createStatement();
 			ResultSet result= stm.executeQuery(sqlBuilder);
 			while (result.next()){
-<<<<<<< HEAD
-				return emp = new EmpruntArchiveDB(result.getDate(4), result.getDate(3), result.ge, null);
-=======
 				return emp = new EmpruntArchiveDB(result.getDate(4), result.getDate(3), result.getInt(2), result.getInt(1));
->>>>>>> dd2be9d639cba31745c4df732e330ca04b9daa17
 			}
 			
 		} catch (SQLException e) {
@@ -37,17 +33,6 @@ public class EmpruntArchiveDao {
 		}
 		return emp;
 		
-<<<<<<< HEAD
-		return null;
-	}
-	
-	
-	
-	public ArrayList<EmpruntArchiveDB> findByUtilisateur(int idUtilisateur){
-		ArrayList<EmpruntArchiveDB> arrEmpruntAdb = new ArrayList<EmpruntArchiveDB>();
-		
-		return null;
-=======
 	}
 	
 	public ArrayList<EmpruntArchiveDB> findByUtilisateur(int idUtilisateur){
@@ -88,8 +73,6 @@ public class EmpruntArchiveDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
->>>>>>> dd2be9d639cba31745c4df732e330ca04b9daa17
 	}
 	
 	

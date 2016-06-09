@@ -6,11 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 import java.util.Date;
 
->>>>>>> dd2be9d639cba31745c4df732e330ca04b9daa17
 import biblio.jdbc.ConvertDate;
 
 public class EmpruntEnCoursDao {
@@ -45,8 +42,6 @@ public class EmpruntEnCoursDao {
 		}
 	}
 	
-<<<<<<< HEAD
-=======
 	
 	public void insertEmpruntEnCours(int idExemplaire, int idUtilisateur, Date today){
 		
@@ -72,7 +67,6 @@ public class EmpruntEnCoursDao {
 	
 	
 	
->>>>>>> dd2be9d639cba31745c4df732e330ca04b9daa17
 	public EmpruntEnCoursDB findByKey(int idex){
 		EmpruntEnCoursDB emp = null;
 		String sqlBuilder = "SELECT idexemplaire, idutilisateur, dateemprunt FROM empruntencours WHERE idexemplaire = "+ idex;
@@ -127,8 +121,6 @@ public class EmpruntEnCoursDao {
 		
 		
 	}
-<<<<<<< HEAD
-=======
 	
 	//ajouter table retardEncours et Retardarchive
 		public void retourEmprunt(int idExemplaire) {
@@ -150,5 +142,4 @@ public class EmpruntEnCoursDao {
 			}
 			
 		}
->>>>>>> dd2be9d639cba31745c4df732e330ca04b9daa17
 }
