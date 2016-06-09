@@ -5,13 +5,17 @@ import java.util.Date;
 public class EmpruntArchive {
 	private Date dateRestitutionEff;
 	private Date dateEmprunt;
-	private Utilisateur emprunteur;
-	private Exemplaire exemplaire;
+	private int idUtilisateur;
+	private int idExemplaire;
 	
-	public EmpruntArchive(EmpruntEnCours eec) {
-		dateEmprunt=eec.getDateEmprunt();
-		dateRestitutionEff=new Date();
-		emprunteur=eec.getEmprunteur();
-		exemplaire=eec.getExemplaire();
+	
+
+	public EmpruntArchive(Date dateRestitutionEff, Date dateEmprunt, int idUtilisateur, int idExemplaire) {
+		this.dateRestitutionEff = dateRestitutionEff;
+		this.dateEmprunt = dateEmprunt;
+		this.idUtilisateur = idUtilisateur;
+		this.idExemplaire = idExemplaire;
 	}
+	
+	
 }

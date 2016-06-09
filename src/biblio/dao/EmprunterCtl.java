@@ -34,8 +34,8 @@ public class EmprunterCtl {
 				return true;
 			}
 		}else{
-			if (isDelete(eec)==true){
-				System.out.println("Employé Emprunt impossible cause exemplaire suprimé");
+			if ((isDelete(eec)==true) || (isDisponible(eec)==false)){
+				System.out.println("Employé Emprunt impossible ");
 				return false;
 			}else{
 				System.out.println("Employé Emprunt possible");

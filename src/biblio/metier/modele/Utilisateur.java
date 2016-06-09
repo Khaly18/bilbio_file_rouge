@@ -76,7 +76,8 @@ public class Utilisateur extends Personne{
 	public void retour(EmpruntEnCours ep){
 		ep.getExemplaire().setStatus(EnumStatusExemplaire.DISPONIBLE);
 		empruntEnCours.remove(ep);
-		empruntArchives.add(new EmpruntArchive(ep));
+		//modifier les parametre de lobjet pour la construction
+		//empruntArchives.add(new EmpruntArchive(ep));
 	}
 	@Override
 	public String toString() {

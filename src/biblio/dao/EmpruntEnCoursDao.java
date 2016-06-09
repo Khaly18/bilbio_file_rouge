@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
+
 import biblio.jdbc.ConvertDate;
 
 public class EmpruntEnCoursDao {
@@ -38,6 +40,31 @@ public class EmpruntEnCoursDao {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void insertEmpruntEnCours(int idExemplaire, int idUtilisateur, Date today){
+		
+		String sqlBuilder = "INSERT INTO empruntencours (idexemplaire, idutilisateur, dateemprunt) VALUES (?, ?, ?)";
+		
+		try {
+			
+			PreparedStatement pstm = conn.prepareStatement(sqlBuilder);
+			pstm.setInt(1, idExemplaire);
+			pstm.setInt(2, idUtilisateur);
+			pstm.setString(3, ConvertDate.dateToString(today));
+			if(checkerCtl.isEmpruntPossible(new EmpruntEnCoursDB(today, idExemplaire, idUtilisateur))){
+				setToPrete(new EmpruntEnCoursDB(today, idExemplaire, idUtilisateur).getIdExemplaire());
+				pstm.execute();
+				conn.commit();
+			}
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	public EmpruntEnCoursDB findByKey(int idex){
 		EmpruntEnCoursDB emp = null;
@@ -93,4 +120,25 @@ public class EmpruntEnCoursDao {
 		
 		
 	}
+	
+	//ajouter table retardEncours et Retardarchive
+		public void retourEmprunt(int idExemplaire) {
+			String sqlBuilder = "SELECT idexemplaire, idutilisateur, dateemprunt"
+					+ " FROM empruntencours WHERE idexemplaire = "+ idExemplaire;
+			
+			try {
+				
+				Statement stm = conn.createStatement();
+				ResultSet result = stm.executeQuery(sqlBuilder);
+				if(result.next()){
+					sqlBuilder = "DELETE FROM empruntencours WHERE idexemplaire = "+ idExemplaire;
+					stm.executeUpdate(sqlBuilder);
+					conn.commit();
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
 }
