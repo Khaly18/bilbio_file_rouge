@@ -22,6 +22,7 @@ public class EmpruntEnCoursDao {
 		checkerCtl = new EmprunterCtl(conn);
 	}
 	
+	
 	public void insertEmpruntEnCours(EmpruntEnCoursDB empruntEncours){
 		
 		String sqlBuilder = "INSERT INTO empruntencours (idexemplaire, idutilisateur, dateemprunt) VALUES (?, ?, ?)";

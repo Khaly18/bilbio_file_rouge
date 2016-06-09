@@ -59,7 +59,6 @@ public class UtilisateurDao {
 				dateNaissance = result.getDate(10);
 				pseudo = result.getString(11);
 				
-				
 				if (cat_utili.equals("ADHERENT")) {
 					tel = result.getString(6);
 					user = new Adherent(nom, prenom, id);
